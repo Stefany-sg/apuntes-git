@@ -1,5 +1,7 @@
 # Curso Git y Github 2025
-## Qué es markdown?
+## Qué es markdown? 
+![](imagenes/markdown.png)
+
 Lenguaje de marcado ligero y sencillo que permite dar estilo a un texto sin usar html.
 # Clase 1
 ## Introduccion a Git
@@ -41,16 +43,15 @@ Alternativa:
 git init nombre-proyecto --initial-branch=main
 ```
 
-### Dato: Que es GitFlow 
-Se define como un **sistema de _branching_ o ramificación o modelo de manejo de ramas en Git, en el que se usan las ramas principales y la _feature_. De modo que la rama _feature_ la crean los desarrolladores para fusionarla con la rama principal, únicamente cuando cumpla con sus labores.
-
 # Clase 2
 ## States y commits
 - ### Modified
     Cuando un archivo se crea, elimina o tiene cambios no confirmados
 - ### Staged
-    Área temporal transitoria : Archivo marcado listo para ser confirmado en el repositorio local
-En esta area de staged van todos los archivos que queremos agregar nuestro commit. 
+    Área temporal transitoria : Archivo marcado listo para ser confirmado en el repositorio local. En esta area de **staged** van todos los archivos que queremos agregar nuestro commit.
+    ![](imagenes/gitStatus1.png) 
+    ![](imagenes/gitStatus2.png)
+    
 - ### Commited
     Los cambios son confirmados y grabados en el repositorio. Esto es un **commit**
 
@@ -66,3 +67,7 @@ $ git commit
 # Clase 3
 # Clase 4
 # Clase 5
+
+
+### Dato: Que es GitFlow 
+Se define como un **sistema de _branching_ o ramificación o modelo de manejo de ramas en Git, en el que se usan las ramas principales y la _feature_. De modo que la rama _feature_ la crean los desarrolladores para fusionarla con la rama principal, únicamente cuando cumpla con sus labores.
