@@ -1,11 +1,11 @@
 # Curso Git y Github 2025
-
-
+## Qué es markdown?
+Lenguaje de marcado ligero y sencillo que permite sar estilo a un texto sin usar html.
 # Clase 1
 ## Introduccion a Git
 ### Que es un control de versiones?
 Sistema de registro de cambios en el codigo fuente de un proyecto. Permite tener un historico de cambios y quien los hizo
-Ej. UN checkpoint de un juego
+>Ej. Un checkpoint de un juego
 Importancia:                
 - Rendimiento, solo se guarda lo necesario (solo copia cambios)
 - Seguridad, conserva toda acción (cambios y quienes lo hicieron)
@@ -14,22 +14,33 @@ Importancia:
 ### Que es Git?
 Nos permite trabajar colaborativamente
 Herramienta de control de versiones. Al  ser un sistema distribuido aloja una copia del repositorio en cada maquina local y se puede tener uno o varios repositorios remotos
-
-Repositorio remoto: Los repositorios remotos son versiones de tu proyecto que están hospedadas en Internet o en cualquier otra red. Puedes tener varios de ellos, y en cada uno tendrás generalmente permisos de solo lectura o de lectura y escritura.  https://git-scm.com/book/es/v2/Fundamentos-de-Git-Trabajar-con-Remotos
 ### Que es un repositorio?
 Carpeta donde se almacenan ficheros de un proyecto. En el repositorio hay notas que indican el cambio realizado
 Pueden ser locales (nuestro ordenador) o remotos (servidor externo)
+#### Repositorio remoto
+Los repositorios remotos son versiones de tu proyecto que están hospedadas en Internet o en cualquier otra red. Puedes tener varios de ellos, y en cada uno tendrás generalmente permisos de solo lectura o de lectura y escritura.
+[Fundamentos de git](https://git-scm.com/book/es/v2/Fundamentos-de-Git-Trabajar-con-Remotos)
 
-Nota: Es sensible a cambio de salto de linea diferentes entre linux y windows (LF y CRLF) Se debe configurar correctamente
+>Nota: Es sensible a cambio de salto de linea diferentes entre linux y windows (LF y CRLF) Se debe configurar correctamente
+
 
 ### Iniciar un proyecto en Git
 Inicializa un repositorio de git vacio en la ruta en la que estás y crea una carpeta .git
+
+```
 git init nombre-proyecto
 cd nombre-proyecto
+```
+
 ALternativa:
+
+```
 git init nombre-proyecto --initial-branch=main
+```
+
 ### Dato: Que es GitFlow 
 Se define como un **sistema de _branching_ o ramificación o modelo de manejo de ramas en Git, en el que se usan las ramas principales y la _feature_. De modo que la rama _feature_ la crean los desarrolladores para fusionarla con la rama principal, únicamente cuando cumpla con sus labores.
+
 # Clase 2
 # Clase 3
 # Clase 4
