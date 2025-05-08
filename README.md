@@ -80,9 +80,7 @@ Referencia el punto actual del historial de cambios en el que se está trabajand
 ## ¿Qué es una rama en git?
 Puntero a un commit especifico (snapshot del proyecto en un momento dado). Son bifurcaciones del código
 
-|Ramas                   |Ramas: Punteros       |
-|------------------------|-----------------------|
-|![](imagenes/branch.jpg)|![](imagenes/ramas.jpg)|
+![](imagenes/ramas.jpg)
 
 > **Nota:** La rama main solia llamarse master
 
@@ -259,14 +257,45 @@ Cuando se crea una PR muestra los commit de la rama, las revisones hechas, y cam
 3. Entender el contexto, se ponen parches y aunuqe el codigo no sea bonito es funcional.
 
 # Clase 5
+## ¿Qué es un GitFlow?
+Forma de usar Git de un equipo al trabajar de manera colaborativa. Se siguen pautas
 
+## Git Flow
+1. **main (master):** Contiene el codigo visible
+2. **develop:** Código a ser probado y validado
+3. **Feature:** Características nuevas
+4. **Realease:** Cambios de ultimo momento
+5. **Hotfix:** Arreglar bugs pequeños
+|![](imagenes/branch.jpg)
+
+## GitHub Flow
+Rama **main** y cualquier otra rama, usualmente `features`, que quiera ser integrada a la rama principal por medio de una pull request. Es más simple.
+> **CI/CD:** Integracion continua y despliegue continuo. (recomendado)
+
+![](imagenes/GitHub-Flow.png)
+
+## Trunk Based Development
+Rama **main** y ramas auxiliares efímeras integradas con PR. 
+Es obligatorio contar con CI/CD.
+
+![](imagenes/trunk.png)
+
+## Ship/Show/Ask
+1. **Ship:** Se fusiona en la rama principal sin revisión.
+2. **Show:** Abre una PR, si pasan la revision de CI se fucionan directamente. No estoy totalmente seguro del cambio, quiero quwe el equipo lo vea.
+3. **Ask:** No se si esta bien el cambio, solicita revisión. Discusión y feedback antes de fusionar.
+### Reglas
+1. Buen sistema CI/CD pero no es obligatorio
+2. Confiamos en el equipo, cada uno es responsable de la categoria del cambio y existen buenas practicas.
+3. Las revisiones de codigo no son obligatorias
+4. Ramas que salen del main son pequeñas y de vida corta.
+5. El equipo confia en los demás
 
 # Clase 6
-### Dato: Que es GitFlow 
-Se define como un **sistema de _branching_ o ramificación o modelo de manejo de ramas en Git, en el que se usan las ramas principales y la _feature_. De modo que la rama _feature_ la crean los desarrolladores para fusionarla con la rama principal, únicamente cuando cumpla con sus labores.
 
 # Clase 7
-En que casos deshacemos cambios
+En que casos deshacemos cambios 
+
 
 deja de funcionar 
 
