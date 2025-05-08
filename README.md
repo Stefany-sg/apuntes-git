@@ -14,15 +14,12 @@ Sistema de registro de cambios en el codigo fuente de un proyecto. Permite tener
 - SSH -> Firma digital que permite verificar la identidad
 - Flexibilidad, no es necesario un desarrollo lineal. Se pueden hacer cambios "paralelos" en equipo
 ### Que es Git?
-Es una herramienta de control de versiones. Al  ser un sistema distribuido aloja una copia del repositorio en cada maquina local y se puede tener uno o varios repositorios remotos.
+Es una herramienta de **control de versiones**. Al  ser un sistema distribuido aloja una copia del repositorio en cada maquina local y se puede tener uno o varios repositorios remotos.
 
 Nos permite trabajar colaborativamente
 ### Que es un repositorio?
 Carpeta donde se almacenan ficheros de un proyecto. En el repositorio hay notas que indican el cambio realizado
 Pueden ser locales (nuestro ordenador) o remotos (servidor externo)
-#### Repositorio remoto
-Los repositorios remotos son versiones de tu proyecto que están hospedadas en Internet o en cualquier otra red. Puedes tener varios de ellos, y en cada uno tendrás generalmente permisos de solo lectura o de lectura y escritura.
-[Fundamentos de git](https://git-scm.com/book/es/v2/Fundamentos-de-Git-Trabajar-con-Remotos)
 
 > **Nota:**
 >Git es sensible a los cambios de salto de linea diferentes entre linux y windows ya que los detecta como modificaciones al momento de hacer un commit (LF y CRLF)
@@ -141,7 +138,7 @@ Ocurre durante una fusión (merge) cuando la rama de destino no ha tenido nuevos
 Al hacer `git merge` no solamente crea el commit de la fusion, tambien trae todos los otros commits.
 ## Eliminar ramas ¿Por qué?
 Es buena práctica y para mantener el codigo limpio
-### Eliminando ramas
+### Comandos para eliminar ramas
 ```
 git branch --delete <branch>
 git branch -D <branch>
@@ -172,9 +169,99 @@ $ git diff
 Los errores se pueden arreglar en el editor de compilacion eligiendo si se quiere aceptar uno, ambos cambios o ninguno
 
 # Clase 4
+## GitHub
+Servicio de alojamiento en la nube para control de versiones. 
+
+## Repositorio remoto
+Los repositorios remotos son versiones de tu proyecto que están hospedadas en un servidor. Sirve como punto de sincronización entre repositorios locales.
+
+### Gestion de proyectos
+![](imagenes/proyectos.jpg)
+
+### GitHub Actions
+Plataforma de CI/CD (Integración Continua/Despliegue Continuo) que permite automatizar el flujo de trabajo de desarrollo de software en GitHub. Permite compilar, probar e implementar código directamente desde tu repositorio de GitHub creando flujos de trabajo personalizados. 
+
+### Organizaciones
+La gente añadida a la organizacion tiene visibilidad de todos los repositorios de la organización
+
+## Enlazar repositorio local con el repositorio remoto
+```
+$ git remote add origin <URL.git>
+```
+### Si es un repositorio ya existente
+```
+$ git clone <URL.git>
+```
+> `git@github.com:nombre/repo.git` para clonar con direccion SSH
+### Generar key SSH
+Se usa para protenger el repositorio y proteger tu identidad.
+
+## Actualizar repositorio local
+Primero se usa `git fetch` para actualizar las **referencias** de las ramas el repo remoto, luego te mueves a la rama y recien se visualiza en el local y hacer un `git pull`. Esto se hace para evitar hacer `git pull` de una rama en rama ej. main.
+```
+$ git fetch
+```
+### Comando para eliminar ramas
+Si se elimina una rama desde github en el repo local aun existe la referencia. El comando actualiza las referencias de las ramas del repo remoto. (Borra)
+```
+$ git remote prune origin
+```
+
+## git push, git pull y pull request
+Son tipos de fusiones
+## git push
+Empuja cambios del repo local al repo remoto. Debe subir ramas existentes.
+```
+$ git push <alias> <rama>
+```
+### Comandos de git push
+`$ git push -u origin <branch>`: El `-u` hace una coneccion entre el local y el remoto. Se hace para cada rama para usar `git push` directamente
+ 
+`$ git push origin <branch1><branch2><branchN>`: Empuja ciertas ramas en particular
+
+`$ git push --all`: Actualiza todas las ramas en su referencia adecuada
+
+`$ git push -force <nombre-remoto><rama-remota>`: Peligro: Sobreescribe el historial de commits locales con los del repo remoto
+
+`$ git push -d origin <branch>`: Eliminar ramas
+## git pull
+Descargar cambios del repo remoto al local.
+```
+$ git pull <alias> <rama>
+```
+### Comandos de git pull
+`git pull --set-upstream origin <branch>` : enlazar remoto con local
+
+`git pull --all` : traer todos los cambios.
+
+`git pull origin <branch1><branch2><branchN>` : todos los cambios a una sola rama
+
+### Conflictos en pull y push
+Cuando la rama a la que hacemos pull hizo cambios en las mismas lineas que el local.
+
+## ¿Qué es un Pull Request?
+Peticion de cambios que se envia al repositorio original. Pedir una revisión.
+### ¿Cómo se hace?
+Tenemos que subir nuesta rama `git push` y luego hacer el PR 
+
+|      Opción 1                 |      Opción 2       |
+|-------------------------------|---------------------|
+|![](imagenes/PR.jpg)           |![](imagenes/PR2.jpg)|
+
+Cuando se crea una PR muestra los commit de la rama, las revisones hechas, y cambios en los archivos. Una vez aprobado el PR se fucionan las ramas
+### Tips
+#### Crear PR
+1. Hacer una PR pequeña de algo específico
+2. Explicar el PR usando los recursos que se tiene
+#### Revisar PR
+1. Feddback positivo
+2. Ser claros y concretos
+3. Entender el contexto, se ponen parches y aunuqe el codigo no sea bonito es funcional.
+
 # Clase 5
 
 
+# Clase 6
 ### Dato: Que es GitFlow 
 Se define como un **sistema de _branching_ o ramificación o modelo de manejo de ramas en Git, en el que se usan las ramas principales y la _feature_. De modo que la rama _feature_ la crean los desarrolladores para fusionarla con la rama principal, únicamente cuando cumpla con sus labores.
 
@@ -185,18 +272,19 @@ deja de funcionar
 
 recuperar archivos
 
-## Comando destructivos y no destructivos
+## Comandos destructivos y no destructivos
 - Destructivo: Afectan el historial de commits realizados.
 - No destructivo: Trabajn en base al historial sin afectarlo.
 
->Ej. `git rebase` es un comando destructivo
+>Ej. `git rebase` es un comando destructivo.
 
 ### git reset
-- soft: Mantiene los cambios que ocurrieron antes de hacer commit
-- hard: Descarta los cambios
+- soft: Mantiene los cambios que ocurrieron antes de hacer commit.
+- hard: Descarta los cambios.
 
-Resetea los cambios del commit lo deja en el estado anterior
-similar a git commit —ammend 
+Resetea los cambios del commit lo deja en el estado anterior.
+Similar a git commit —ammend 
+
 `git reset --hard` cambia el id
 se mantiene los cambios pero borra el commit (los 4 holas se mantienen)
 
@@ -250,12 +338,14 @@ git checkout <id> entramos a un comiit pasado y agarramos la modificacion que ne
 
 `git switch -`: intercala entre dos ramas
 
+`git remote`: muestra el alias
+
 ## Comandos para ramas
 `git branch` listado de ramas
 
 `git branch <branch>`: crear rama
 
-`git branch -a`: permite visualizar todas las ramas incluyendo ramas de la nube
+`git branch -a`: permite visualizar todas las ramas incluyendo ramas de la nube del (repositorio remoto)
 
 `git checkout <brach>`: Cambiar de rama
 
@@ -272,3 +362,18 @@ git checkout <id> entramos a un comiit pasado y agarramos la modificacion que ne
 `git branch -d <branch>`: eliminar ramas evitando borrar ramas sin merged
 
 `git log --oneline --graph`: muestra donde se ha hecho los commits que implican una fusion 
+
+# Comandos git pull y git push
+
+`$ git branch -a`: Aparecen de blanco las ramas locales y de rojo las ramas del repo remoto (alias)
+
+`$ git remote -v`: Comando para listar los alias y el URL al que apunta
+
+`git config`: Se debe configurar el nombre, gmail de github y nombre de usuario
+
+`$ git fetch`: Actualizar referencias de ramas del repo remoto al local
+
+`$ git push <alias> <rama>`: Debe subir ramas existentes
+
+`$ git pull`: Comando para traer cambios de otras personas.
+
