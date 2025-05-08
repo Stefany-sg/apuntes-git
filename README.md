@@ -335,49 +335,85 @@ Se hacen commits pequeños a menudo. No significa hacer commits sin sentido
 
 
 # Clase 7
-En que casos deshacemos cambios 
-
-
-deja de funcionar 
-
-recuperar archivos
+## Deshacer cambios
+### ¿En que casos deshacemos cambios?
+- Deja de funcionar 
+- Recuperar codigo eliminado
+- Recuperar archivos eliminados
 
 ## Comandos destructivos y no destructivos
-- Destructivo: Afectan el historial de commits realizados.
-- No destructivo: Trabajn en base al historial sin afectarlo.
+- **Destructivo:** Afectan el historial de commits realizados.
+- **No destructivo:** Trabajn en base al historial sin afectarlo.
 
 >Ej. `git rebase` es un comando destructivo.
-
+##  git reset y git revert
+Para usar estos comandos hay que saber los cambios hechos en los commits que vamos a usar.
+```
+$ git show <id>
+```
 ### git reset
-- soft: Mantiene los cambios que ocurrieron antes de hacer commit.
-- hard: Descarta los cambios.
+Te devuelve a un checkpoint anterior y borra lo de adelante. Es un comando **destructivo**
+- **soft:** Mantiene los cambios que ocurrieron antes de hacer commit.
+- **hard:** Descarta todos los cambios.
 
-Resetea los cambios del commit lo deja en el estado anterior.
-Similar a git commit —ammend 
+#### hard
+Resetea los cambios, lo deja como estaba en el commit elegido antes de hacer los commits posteriores.
 
-`git reset --hard` cambia el id
-se mantiene los cambios pero borra el commit (los 4 holas se mantienen)
+```
+git reset --hard <id-del-commit>
+``` 
 
-mantiene en el estado de modiffied
+#### soft
+Elimina el commit pero los cambios se mantienen. Mantiene el estado de modiffied.
 
-esto no es ni hard ni soft (no esta en modiffied)
+```
+git reset --soft <id-del-commit>
+``` 
+
+> Ej. Si usamos `git reset` ya sea hard o soft para "arreglar" un commit y luego volver a hacer el commit este tendra un `id` distinto. Similar a `git commit --ammend` (técnicamente se borra el commit y se crea uno diferente)
+ 
+#### Usar comando `git reset <id>` 
+No actua ni como soft ni como hard, no esta en estado modiffied y los cambios se mantienen.
 
 ### git revert
-Revierte los cambios de un commit y crea uno nuevo con los cambios revertidos.
+Revierte los cambios de un commit y crea uno nuevo con los cambios revertidos. No borra commits, es un comando **no destructivo**, por lo que pueden surgir conflictos al trabajar sobre el mismo archivo.
 
-no borra commits (no es desctructivo)
+Solo afecta a los cambios del `padre` del commit indicado. Devuelve al **padre**  del commit (el commit anterior)
 
-solo afecta los cambios del commit que le estamos diciendo
+#### Comando para cancelar revert
+```
+$ git revert --abort
+```
 
-devuelve al **padre**  del commit
-te devuelve al estado anterior (se puede usar para el merge y para el pull)
-git checkout <id> entramos a un comiit pasado y agarramos la modificacion que necesitamos
+> Se puede usar para el merge y para el pull
 
-> `git reset` o `git revert` cuando sabemos que cambios hicimos
+### git checkout
+Recupera codigo específico de commits. Puedes ingresar a un commit pasado y agarramor la modificacion que necesitas.
 
-`git show <id>` muestra  
+![](imagenes/commit.jpg)
 
-`git reflog` → log de como se fueron cambiando el historial de commits
+```
+$ git checkout <id>
+```
+### Comando: `git reset --hard HEAD~<N>` 
+> HEAD: es un puntero. 
+Si quiero hacer cambios aun punto anterior, modifico el commit al que HEAD apunta.
+N → desde la posicion actual del HEAD cuantos quiero recorrer.
+
+### Borre mi historial de comandos
+Hice un `git reset` al primer commit de todos
+
+`git reflog` → log de como se fueron cambiando el historial de commits (solo los muestra)
+ 
+ #### Solución en caso de tener los cambios en la nube
+ ```
+ $ git pull origin main
+ ```
+
+
+# Clase 8 
+
+
 
 # Comandos
  `comando && comando` -> se pueden concatenar dos comandos
@@ -435,7 +471,7 @@ git checkout <id> entramos a un comiit pasado y agarramos la modificacion que ne
 
 `git branch -a | grep <prefijo>`: listar ramas con el prefijo mencionado.
 
-# Comandos git pull y git push
+## Comandos git pull y git push
 
 `$ git branch -a`: Aparecen de blanco las ramas locales y de rojo las ramas del repo remoto (alias)
 
@@ -449,3 +485,4 @@ git checkout <id> entramos a un comiit pasado y agarramos la modificacion que ne
 
 `$ git pull`: Comando para traer cambios de otras personas.
 
+# Links de referencia
