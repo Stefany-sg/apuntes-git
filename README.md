@@ -294,6 +294,45 @@ Es obligatorio contar con CI/CD.
 5. El equipo confia en los demás
 
 # Clase 6
+## Buenas Practicas en Git
+### Función
+- Es un estándar
+- Resolver conflictos más facil
+- Historial de commit legible
+
+### 1. ¿Cada cuanto hacer commits?
+Se hacen commits pequeños a menudo. No significa hacer commits sin sentido
+### Escribir buenos commits
+- Usar verbos en presente: `add`, `change`, `fix`, `remove`
+- No se siguen reglas de puntuacion
+- Deben estar en minuscula
+- Maximo 50 caracteres (en el cuerpo se puede alargar)
+- Usar utilidades
+- Usar prefijos
+
+```
+<tipo-de-commit>[scoope]: <descripcion>
+```
+
+#### Prefijos
+- **feat:** Nueva caracteristica para el usr.
+- **fix:** bug que afecta al usr.
+- **perf:** cambios que mejoran rendimiento.
+- **build:** cambios en el sistema de build, despliegue o instalacion.
+- **ci:** cambios en la integracion continua.
+- **docs:** cambios en la documentacion.
+- **refactor:** refactorización del código.
+- **style:** cambios de formato, tabulaciones, espacion o punto y coma, etc.
+- **test:** tests o refactorización de uno ya existente
+
+> Podemos crear nuestros propios prefijos
+
+### Escribir un buen nombre de rama (sugerencias)
+- Ser consistente con los nombres `prefijo/accion`
+- Usar nombre de la acción a realizar en la rama
+- Usar IDs de JIRA o sistema de tickets 
+
+
 
 # Clase 7
 En que casos deshacemos cambios 
@@ -393,6 +432,8 @@ git checkout <id> entramos a un comiit pasado y agarramos la modificacion que ne
 `git branch -d <branch>`: eliminar ramas evitando borrar ramas sin merged
 
 `git log --oneline --graph`: muestra donde se ha hecho los commits que implican una fusion 
+
+`git branch -a | grep <prefijo>`: listar ramas con el prefijo mencionado.
 
 # Comandos git pull y git push
 
