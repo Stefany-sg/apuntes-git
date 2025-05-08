@@ -178,6 +178,48 @@ Los errores se pueden arreglar en el editor de compilacion eligiendo si se quier
 ### Dato: Que es GitFlow 
 Se define como un **sistema de _branching_ o ramificación o modelo de manejo de ramas en Git, en el que se usan las ramas principales y la _feature_. De modo que la rama _feature_ la crean los desarrolladores para fusionarla con la rama principal, únicamente cuando cumpla con sus labores.
 
+# Clase 7
+En que casos deshacemos cambios
+
+deja de funcionar 
+
+recuperar archivos
+
+## Comando destructivos y no destructivos
+- Destructivo: Afectan el historial de commits realizados.
+- No destructivo: Trabajn en base al historial sin afectarlo.
+
+>Ej. `git rebase` es un comando destructivo
+
+### git reset
+- soft: Mantiene los cambios que ocurrieron antes de hacer commit
+- hard: Descarta los cambios
+
+Resetea los cambios del commit lo deja en el estado anterior
+similar a git commit —ammend 
+`git reset --hard` cambia el id
+se mantiene los cambios pero borra el commit (los 4 holas se mantienen)
+
+mantiene en el estado de modiffied
+
+esto no es ni hard ni soft (no esta en modiffied)
+
+### git revert
+Revierte los cambios de un commit y crea uno nuevo con los cambios revertidos.
+
+no borra commits (no es desctructivo)
+
+solo afecta los cambios del commit que le estamos diciendo
+
+devuelve al **padre**  del commit
+te devuelve al estado anterior (se puede usar para el merge y para el pull)
+git checkout <id> entramos a un comiit pasado y agarramos la modificacion que necesitamos
+
+> `git reset` o `git revert` cuando sabemos que cambios hicimos
+
+`git show <id>` muestra  
+
+`git reflog` → log de como se fueron cambiando el historial de commits
 
 # Comandos
  `comando && comando` -> se pueden concatenar dos comandos
