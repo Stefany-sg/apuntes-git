@@ -1,7 +1,9 @@
 # Curso Git y Github 2025
-## Qué es markdown?   ![](imagenes/markdown.png)
-
+## Qué es markdown?   
 Lenguaje de marcado ligero y sencillo que permite dar estilo a un texto sin usar html.
+
+![](imagenes/markdown.png)
+
 # Clase 1
 ## Introduccion a Git
 ### Que es un control de versiones?
