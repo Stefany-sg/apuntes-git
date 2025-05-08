@@ -83,7 +83,10 @@ Referencia el punto actual del historial de cambios en el que se está trabajand
 ## ¿Qué es una rama en git?
 Puntero a un commit especifico (snapshot del proyecto en un momento dado). Son bifurcaciones del código
 
-![](imagenes/branch.jpg)
+|Ramas                   |Ramas: Punteros       |
+|------------------------|-----------------------|
+|![](imagenes/branch.jpg)|![](imagenes/ramas.jpg)|
+
 > **Nota:** La rama main solia llamarse master
 
 ## ¿Para qué sirven las ramas?
@@ -92,7 +95,7 @@ Puntero a un commit especifico (snapshot del proyecto en un momento dado). Son b
 Cada quien trabaja en una rama diferente y posteriormente las ramas vuelven a la rama `main`
 
 ## Crear una primera rama
-Las ramas que creamos siempre son en base a nuestro ultimo commit
+Las ramas que creamos siempre son en base a nuestro ultimo commit y son independientes de otras.
 ### Crear rama
 ```
 $ git branch <branch>
@@ -106,7 +109,7 @@ $ git switch <branch>
 ```
 $ git switch -c <branch>
 ```
-> No se pueden crear ramas con el mismo nombre
+> No se pueden crear ramas con el mismo nombre.
 
 ### Tener en cuenta
 - Al crear la rama `(HEAD -> branch, main)` esto se debe a que las ramas son apuntadores y ambas ramas estan en el mismo nivel.
@@ -115,6 +118,59 @@ $ git switch -c <branch>
 ![](imagenes/main.jpg)
 
 # Clase 3
+## Fusionar ramas
+Al fusionar, el codigo de una rama se asimila en otra.
+
+Se usa `git merge`, se le indica a que rama queremos aderir la rama en la que nos encontramos. Al ejecutarlo, se crea un commit que incluye todos los cambios de la rama origen a la rama actual.
+
+> **Commit de fusión:** `Merge branch <branch>`
+
+#### ¿Qué es un fast forward
+Ocurre durante una fusión (merge) cuando la rama de destino no ha tenido nuevos commits desde que se creó o actualizó la rama de origen. En ese caso, Git puede simplemente mover el puntero de la rama de destino al último commit de la rama de origen, sin crear un nuevo commit de fusión
+
+### Modificando el mensaje del commit
+- Abre el editor antes de hacer el commit
+    ```
+    $ git merge --edit
+    ```
+- Evita que haga commit automaticamente
+    ```
+    $git merge --no-commit
+    ```
+
+Al hacer `git merge` no solamente crea el commit de la fusion, tambien trae todos los otros commits.
+## Eliminar ramas ¿Por qué?
+Es buena práctica y para mantener el codigo limpio
+### Eliminando ramas
+```
+git branch --delete <branch>
+git branch -D <branch>
+git branch -d <branch>
+```
+
+## Comando: git rebase
+Tiene el mismo efecto que `git reset -hard`
+Por ejemplo, si se tienen varios commits, al usar `git rebase` los convierte en un solo commit
+
+## Conflictos en Git 
+Cuando Git no es capaz de determinar el cambio que tiene que prevalecer al hacer una fusion, surge un conflicto.
+![](imagenes/conflicto.jpg)
+Es común tener conflictos al intentar fusionar ramas que hacen cambios en el mismo archivo.
+
+### Resolver conflictos
+![Formato](imagenes/formato.jpg)
+
+Dado un conflicto indica:         
+```
+$ git diff
+```
+- Cual es el conficto
+- Qué esta produciendo el conflicto
+- En qué archivo
+- Formato de error
+
+Los errores se pueden arreglar en el editor de compilacion eligiendo si se quiere aceptar uno, ambos cambios o ninguno
+
 # Clase 4
 # Clase 5
 
@@ -144,11 +200,33 @@ Se define como un **sistema de _branching_ o ramificación o modelo de manejo
 
 `git log --oneline`: solo nombre e identificador del commit
 
-`git log --oneline --graph`
-
 `$ git commit --amend -m "mensaje"`: "renombrar" el texto del commit realizado pero cambia el identificador
 
 `git checkout`
 
+`git rm --cached <archivo_a_ignorar>`: en lugar del .gitignore
+
+`git switch -`: intercala entre dos ramas
+
+## Comandos para ramas
 `git branch` listado de ramas
 
+`git branch <branch>`: crear rama
+
+`git branch -a`: permite visualizar todas las ramas incluyendo ramas de la nube
+
+`git checkout <brach>`: Cambiar de rama
+
+`git switch <branch>`: Cambiar de rama
+
+`git merge <branch>`: hacer fusion
+
+`git merge <branch> --no-ff`: se crea el commit apesar de que era posible hacer un ff
+
+`git merge --abort`: cancelar merge
+
+`git branch -D <branch>`: eliminar ramas (forzando) aunque no esten merged
+
+`git branch -d <branch>`: eliminar ramas evitando borrar ramas sin merged
+
+`git log --oneline --graph`: muestra donde se ha hecho los commits que implican una fusion 
