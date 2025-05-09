@@ -466,6 +466,11 @@ Es una forma de fusionar cambios de cambios en commit especificos.
 ```
 git cherry-pick <SHA>
 ```
+
+![](imagenes/cherry.jpg)
+
+> **Nota:** No se puede usar en un archivo que existe en la rama pero en el main no (rama destino). 
+
 ### Detectar qué commit es el que ha introducido un bug
 ```
 git bisect
