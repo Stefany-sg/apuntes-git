@@ -14,6 +14,7 @@
 8. [Clase 7](#clase-7)
 9. [Clase 8](#clase-8)
 10. [Comandos escenciales](#comandos-escenciales)
+11. 
 
 # Qué es markdown?   
 Lenguaje de marcado ligero y sencillo que permite dar estilo a un texto sin usar html.
