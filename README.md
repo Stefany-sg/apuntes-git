@@ -471,16 +471,14 @@ En caso de querer cambiar de rama cuando aun no se termino una tarea para hacerl
 Se puede revisar con `git stash list` y limpiar la lista con  `git stach clear`
 Solo funciona sobre archivos a los cuales la herramienta de **git ya les esta dando seguimineto**.
 
-`$ git stash`
-
-`$ git stach -u`: se usa para considerar los archivos nuevos creados.
-
-`$ git stach pop`: Cambiar los cambios de una rama a otra (puede traer conflictos).
+- `$ git stash`
+- `$ git stach -u`: se usa para considerar los archivos nuevos creados.
+- `$ git stach pop`: Cambiar los cambios de una rama a otra (puede traer conflictos).
 
 ### Aplicar cambios de commits en especifico
 Es una forma de fusionar cambios de cambios en commit especificos.
 ```
-git cherry-pick <id>
+git cherry-pick <SHA>
 ```
 
 ![](imagenes/cherry.jpg)
@@ -488,13 +486,24 @@ git cherry-pick <id>
 > **Nota:** No se puede usar en un archivo que existe en la rama pero en el main no (rama destino). 
 
 ### Detectar qué commit es el que ha introducido un bug
-```
-git bisect
-git bisect start
-git bisect bad
-git bisect good
-git bisect reset
-```
+Es similar a la busqueda binaria en elementos ordenados. Indicar un commit funcional y donde hay error. Busca el commit donde se introdujo el problema 
+- `git bisect`: paso inicial
+- `git bisect start`: indicar commit funcional
+- `git bisect bad`: commit con conflicto. Descarta lo de arriba
+- `git bisect good`: indicar buen commit. Seguir indicando si es buen o mal commit.
+- `git bisect reset`
+> Repito hasta que me indique el commit que introdujo el bug.
+
+![](imagenes/bisect.jpg)
+
+
+### Comando: Cambiar el nombre de un commit
+- `$ git commit --amend -m "mensaje"`: "renombrar" el texto del commit realizado pero cambia el identificador
+### Comando: Traer un archivo en concreto de otra rama o commit
+- `git checkout <SHA> <archivo>`
+### Comando: Copiar un archivo en concreto de una rama a otra
+- `git checkout <nombre-rama-origen> -- <ruta/al/archivo>`
+
 
 # Comandos escenciales
 -  `comando && comando` -> se pueden concatenar dos comandos
@@ -567,6 +576,18 @@ git bisect reset
 - `$ git push <alias> <rama>`: Debe subir ramas existentes
 
 - `$ git pull`: Comando para traer cambios de otras personas.
+
+
+# Links de referencia
+Descargar Git para Windows: [Windows](https://git-scm.com/download/win)
+
+Descargar Git para Linux: [Linux/Unix](https://git-scm.com/download/linux)
+
+Documentación completa de Git en: [Documentación de Git](https://git-scm.com/doc)
+
+Tutoriales: [Vídeos](https://youtu.be/vlCXdvcgiE0?si=60-9A4zgzLO3YLdW) - Tutoriales en vídeo
+
+Mi inspiración: [Vídeos]() 
 
 
 
