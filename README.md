@@ -1,5 +1,21 @@
 # Curso Git y Github 2025
-## Qué es markdown?   
+## Tabla de contenidos
+1. [¿Qué es markdown?](#qué-es-markdown)
+2. [Clase 1](#clase-1)
+    - [Introducción a Git]
+    -
+    -
+    -
+3. [Clase 2](#clase-2)
+4. [Clase 3](#clase-3)
+5. [Clase 4](#clase-4)
+6. [Clase 5](#clase-5)
+7. [Clase 6](#clase-6)
+8. [Clase 7](#clase-7)
+9. [Clase 8](#clase-8)
+10. [Comandos escenciales](#comandos-escenciales)
+
+# Qué es markdown?   
 Lenguaje de marcado ligero y sencillo que permite dar estilo a un texto sin usar html.
 
 ![](imagenes/markdown.png)
@@ -15,11 +31,11 @@ Sistema de registro de cambios en el codigo fuente de un proyecto. Permite tener
 - Seguridad, conserva toda acción (cambios y quienes lo hicieron)
 - SSH -> Firma digital que permite verificar la identidad
 - Flexibilidad, no es necesario un desarrollo lineal. Se pueden hacer cambios "paralelos" en equipo
-### Que es Git?
+## Que es Git?
 Es una herramienta de **control de versiones**. Al  ser un sistema distribuido aloja una copia del repositorio en cada maquina local y se puede tener uno o varios repositorios remotos.
 
 Nos permite trabajar colaborativamente
-### Que es un repositorio?
+## Que es un repositorio?
 Carpeta donde se almacenan ficheros de un proyecto. En el repositorio hay notas que indican el cambio realizado
 Pueden ser locales (nuestro ordenador) o remotos (servidor externo)
 
@@ -27,8 +43,7 @@ Pueden ser locales (nuestro ordenador) o remotos (servidor externo)
 >Git es sensible a los cambios de salto de linea diferentes entre linux y windows ya que los detecta como modificaciones al momento de hacer un commit (LF y CRLF)
 Se debe configurar correctamente
 
-
-### Iniciar un proyecto en Git
+## Iniciar un proyecto en Git
 Inicializa un repositorio de git vacio en la ruta en la que estás y crea una carpeta .git
 
 ```
@@ -464,7 +479,7 @@ Solo funciona sobre archivos a los cuales la herramienta de **git ya les esta da
 ### Aplicar cambios de commits en especifico
 Es una forma de fusionar cambios de cambios en commit especificos.
 ```
-git cherry-pick <SHA>
+git cherry-pick <id>
 ```
 
 ![](imagenes/cherry.jpg)
@@ -480,76 +495,77 @@ git bisect good
 git bisect reset
 ```
 
-# Comandos
- `comando && comando` -> se pueden concatenar dos comandos
+# Comandos escenciales
+-  `comando && comando` -> se pueden concatenar dos comandos
 
-`$ git init nombre-proyecto`: inicializar nuevo repositorio en el directorio actual
+- `$ git init nombre-proyecto`: inicializar nuevo repositorio en el directorio actual
 
-`$ git status`: muestra si existe algun archivo modified
+- `$ git status`: muestra si existe algun archivo modified
 
-`$ git add .`: mueve todos los archivos modificados al area estado staged
+- `$ git add .`: mueve todos los archivos modificados al area estado staged
 
-`$ git add <file>`: pone en el area staged solo los archivos seleccionados
+- `$ git add <file>`: pone en el area staged solo los archivos seleccionados
 
-`$ git commit`: crea un commit sobre el archivo
+- `$ git commit`: crea un commit sobre el archivo
 
-`$ git commit -m "mensaje"`: hacer un commit directamente en el bash
+- `$ git commit -m "mensaje"`: hacer un commit directamente en el bash
 
-`$ git restore --staged <file>`: quita archivos del area de staged
+- `$ git restore --staged <file>`: quita archivos del area de staged
 
-`git log`: para ver los commits realizados con id, fecha, nombre, correo y nombre del commit
+- `git log`: para ver los commits realizados con id, fecha, nombre, correo y nombre del commit
 
-`git log --oneline`: solo nombre e identificador del commit
+- `git log --oneline`: solo nombre e identificador del commit
 
-`$ git commit --amend -m "mensaje"`: "renombrar" el texto del commit realizado pero cambia el identificador
+- `$ git commit --amend -m "mensaje"`: "renombrar" el texto del commit realizado pero cambia el identificador
 
-`git checkout`
+- `git checkout`
 
-`git rm --cached <archivo_a_ignorar>`: en lugar del .gitignore
+- `git rm --cached <archivo_a_ignorar>`: en lugar del .gitignore
 
-`git remote`: muestra el alias
+- `git remote`: muestra el alias
 
 ## Comandos para ramas
-`git branch` listado de ramas
+- `git branch` listado de ramas
 
-`git branch <branch>`: crear rama
+- `git branch <branch>`: crear rama
 
-`git branch -a`: permite visualizar todas las ramas incluyendo ramas de la nube del (repositorio remoto)
+- `git branch -a`: permite visualizar todas las ramas incluyendo ramas de la nube del (repositorio remoto)
 
-`git switch -`: intercala entre dos ramas
+- `git switch -`: intercala entre dos ramas
 
-`git switch <branch>`: Cambiar de rama
+- `git switch <branch>`: Cambiar de rama
 
-`git switch -c <nombre-branch>`: Crea una rama y cambia a esta inmediatamente
+- `git switch -c <nombre-branch>`: Crea una rama y cambia a esta inmediatamente
 
-`git checkout <brach>`: Cambiar de rama
+- `git checkout <brach>`: Cambiar de rama
 
-`git merge <branch>`: hacer fusion
+- `git merge <branch>`: hacer fusion
 
-`git merge <branch> --no-ff`: se crea el commit apesar de que era posible hacer un ff
+- `git merge <branch> --no-ff`: se crea el commit apesar de que era posible hacer un ff
 
-`git merge --abort`: cancelar merge
+- `git merge --abort`: cancelar merge
 
-`git branch -D <branch>`: eliminar ramas (forzando) aunque no esten merged
+- `git branch -D <branch>`: eliminar ramas (forzando) aunque no esten merged
 
-`git branch -d <branch>`: eliminar ramas evitando borrar ramas sin merged
+- `git branch -d <branch>`: eliminar ramas evitando borrar ramas sin merged
 
-`git log --oneline --graph`: muestra donde se ha hecho los commits que implican una fusion 
+- `git log --oneline --graph`: muestra donde se ha hecho los commits que implican una fusion 
 
-`git branch -a | grep <prefijo>`: listar ramas con el prefijo mencionado.
+- `git branch -a | grep <prefijo>`: listar ramas con el prefijo mencionado.
 
 ## Comandos git pull y git push
 
-`$ git branch -a`: Aparecen de blanco las ramas locales y de rojo las ramas del repo remoto (alias)
+- `$ git branch -a`: Aparecen de blanco las ramas locales y de rojo las ramas del repo remoto (alias)
 
-`$ git remote -v`: Comando para listar los alias y el URL al que apunta
+- `$ git remote -v`: Comando para listar los alias y el URL al que apunta
 
-`git config`: Se debe configurar el nombre, gmail de github y nombre de usuario
+- `git config`: Se debe configurar el nombre, gmail de github y nombre de usuario
 
-`$ git fetch`: Actualizar referencias de ramas del repo remoto al local
+- `$ git fetch`: Actualizar referencias de ramas del repo remoto al local
 
-`$ git push <alias> <rama>`: Debe subir ramas existentes
+- `$ git push <alias> <rama>`: Debe subir ramas existentes
 
-`$ git pull`: Comando para traer cambios de otras personas.
+- `$ git pull`: Comando para traer cambios de otras personas.
 
-# Links de referencia
+
+
