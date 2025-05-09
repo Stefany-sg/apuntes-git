@@ -397,6 +397,7 @@ $ git checkout <id>
 ```
 ### Comando: `git reset --hard HEAD~<N>` 
 > HEAD: es un puntero. 
+
 Si quiero hacer cambios aun punto anterior, modifico el commit al que HEAD apunta.
 N → desde la posicion actual del HEAD cuantos quiero recorrer.
 
@@ -412,8 +413,67 @@ Hice un `git reset` al primer commit de todos
 
 
 # Clase 8 
+## Hooks, Alias y Trucos de Git
+### Hook
+Automatiza la ejecutación de una accion `(bash, pearl, python, etc)` cuando ocurre una acción determinada en Git. Más usado del lado cliente que del servidor.
+#### Hooks del lado del cliente
+Solo afectan a su repositorio local
+- **pre-commit** se ejecutan antes de un commit
+    - Comprobar si se hacer commit de varios archivos (que no sean más de 5)
+    - Ejecutar el linter sobre archivos modificados (podrias estandarizar todo el codigo)
+- **prepare-commit-msg:** al momento de escribir el mensaje se puede modificar.
+- **commit-msg** Comprobar el mensaje
+- **post-commit** Notificar por Slack acerca del commit
+- **pre-push** Ejecutar bateria de tests
+- **post-checkout y post-merge** Limpiar directorio de trabajo (ramas etc)
+#### Hooks del lado del servidor
+- **pre-receive** Antes de que un push haga efecto
+    - Comprobar commits bien formados
+    - Verificar permisos del usr que quiere guardar commits 
+- **update** Evitar de forma granular las actualizaciones
+- **post-receive** 
+    - Enviar correo a todos los usr que han grabado cambios
+    - Reflejar en una UI referencias, ramas o commits nuevos
 
+### Creando un Hook
+Crear un archivo con el **nombre de la acción** `nombre-del-hook` en la carpeta `.git/hooks`, aqui va el codigo a ejecutar `(bash, node, pearl, python, etc)`. De otro modo Git no reconoce el hook.
+## Alias
+En lugar de usar los nombres de comandos completos se pueden definir abreviaciones.
+### Crear un alias
+```
+$ git config --global alias.[nombre-del-alias] "comando a ejecutar"
+```
+> El nombre del comando se anota sin las comillas 
+### Eliminar un alias
+```
+$ git config --global --unset alias.[nombre-del-alias]
+```
+## Trucos en Git
+### Guarda tus cambios temporalmente
+En caso de querer cambiar de rama cuando aun no se termino una tarea para hacerle un commit. 
 
+Se puede revisar con `git stash list` y limpiar la lista con  `git stach clear`
+Solo funciona sobre archivos a los cuales la herramienta de **git ya les esta dando seguimineto**.
+
+`$ git stash`
+
+`$ git stach -u`: se usa para considerar los archivos nuevos creados.
+
+`$ git stach pop`: Cambiar los cambios de una rama a otra (puede traer conflictos).
+
+### Aplicar cambios de commits en especifico
+Es una forma de fusionar cambios de cambios en commit especificos.
+```
+git cherry-pick <SHA>
+```
+### Detectar qué commit es el que ha introducido un bug
+```
+git bisect
+git bisect start
+git bisect bad
+git bisect good
+git bisect reset
+```
 
 # Comandos
  `comando && comando` -> se pueden concatenar dos comandos
@@ -442,8 +502,6 @@ Hice un `git reset` al primer commit de todos
 
 `git rm --cached <archivo_a_ignorar>`: en lugar del .gitignore
 
-`git switch -`: intercala entre dos ramas
-
 `git remote`: muestra el alias
 
 ## Comandos para ramas
@@ -453,9 +511,13 @@ Hice un `git reset` al primer commit de todos
 
 `git branch -a`: permite visualizar todas las ramas incluyendo ramas de la nube del (repositorio remoto)
 
-`git checkout <brach>`: Cambiar de rama
+`git switch -`: intercala entre dos ramas
 
 `git switch <branch>`: Cambiar de rama
+
+`git switch -c <nombre-branch>`: Crea una rama y cambia a esta inmediatamente
+
+`git checkout <brach>`: Cambiar de rama
 
 `git merge <branch>`: hacer fusion
 
