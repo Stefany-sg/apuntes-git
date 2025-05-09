@@ -1,22 +1,37 @@
 # Curso Git y Github 2025
 ## Tabla de contenidos
-1. [¿Qué es markdown?](#qué-es-markdown)
+1. [Introducción](#introducción) 
+    - [¿Qué es markdown?](#qué-es-markdown)
 2. [Clase 1](#clase-1)
-    - [Introducción a Git]
-    -
-    -
-    -
+    - [Introducción a Git](#introduccion-a-git)
+        - [Control de versiones](#que-es-un-control-de-versiones)
+        - [Importancia](#importancia)
+    - [¿Qué es Git?](#que-es-git)
+    - [Qué es un repositorio](#que-es-un-repositorio)
+    - [Iniciar un proyecto](#iniciar-un-proyecto-en-git)
 3. [Clase 2](#clase-2)
+    - [States y Commits](#states-y-commits)
+    - [¿Qué es un commit?](#qué-es-un-commit)
+    - [¿Qué es HEAD](#qué-es-el-head)
+    - [Ramas](#ramas)
+        - [¿Qué es?](#qué-es-una-rama-en-git)
+        - [¿Para qué sirve?](#para-qué-sirven-las-ramas)
+        - [Crear una rama](#crear-una-primera-rama)
 4. [Clase 3](#clase-3)
+    - [Fusionar ramas](#fusionar-ramas)
+    - [Eliminar ramas](#conflictos-en-gitictos)
 5. [Clase 4](#clase-4)
+    - [GitHub](#github)
 6. [Clase 5](#clase-5)
 7. [Clase 6](#clase-6)
 8. [Clase 7](#clase-7)
 9. [Clase 8](#clase-8)
 10. [Comandos escenciales](#comandos-escenciales)
-11. 
+11. [Links](#links-de-referencia)
 
-# Qué es markdown?   
+
+# Introducción
+## Qué es markdown?   
 Lenguaje de marcado ligero y sencillo que permite dar estilo a un texto sin usar html.
 
 ![](imagenes/markdown.png)
@@ -587,7 +602,7 @@ Documentación completa de Git en: [Documentación de Git](https://git-scm.com/d
 
 Tutoriales: [Vídeos](https://youtu.be/vlCXdvcgiE0?si=60-9A4zgzLO3YLdW) - Tutoriales en vídeo
 
-Mi inspiración: [Vídeos]() 
+### Mi mayor inspiración: [Inspiración](https://youtu.be/DF8HngPylSI) 
 
 
 
