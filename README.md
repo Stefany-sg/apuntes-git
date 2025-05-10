@@ -641,7 +641,7 @@ Documentación completa de Git en: [Documentación de Git](https://git-scm.com/d
 
 Tutoriales: [Vídeos](https://youtu.be/vlCXdvcgiE0?si=60-9A4zgzLO3YLdW) - Tutoriales en vídeo
 
-### Mi mayor inspiración: [Inspiración](https://youtu.be/DF8HngPylSI) 
+Mi inspiración: [Vídeos](https://youtu.be/DF8HngPylSI) 
 
 
 
